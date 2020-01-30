@@ -50,6 +50,8 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args resolver:(RCTPromiseResolveBlock)res
     _safariView = [[SFSafariViewController alloc] initWithURL:url entersReaderIfAvailable:readerMode];
     _safariView.delegate = self;
 
+    (void)_safariView.view;
+
     // Set tintColor if available
     if (tintColorString) {
         UIColor *tintColor = [RCTConvert UIColor:tintColorString];
@@ -75,7 +77,7 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args resolver:(RCTPromiseResolveBlock)res
 
     // get the view controller closest to the foreground
     UIViewController *ctrl = RCTPresentedViewController();
-    
+
     // Display the Safari View
     [ctrl presentViewController:_safariView animated:YES completion:nil];
 
